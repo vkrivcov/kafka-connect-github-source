@@ -45,6 +45,16 @@ Make sure `config/worker.properties` is configured to wherever your kafka cluste
 
 The simplest way to run `run.sh` is to have docker installed. It will pull a Dockerfile and run the connector in standalone mode above it. 
 
+*NOTE:* In case of Kafka version numbers the above might not work anymore. Use instead:
+
+Instead of the mount-point (change the project path) ```:/connectors```
+
+```docker run -it --rm -p 2181:2181 -p 3030:3030 -p 8081:8081 -p 8082:8082 -p 8083:8083 -p 9092:9092 -e ADV_HOST=127.0.0.1 -e RUNTESTS=0 -v ~/udemy-kafka-connector/kafka-connect-github-source/target/kafka-connect-github-source-1.1-package/share/java/kafka-connect-github-source:/connectors landoop/fast-data-dev```
+
+Use the mount-point ```:/connectors/GitHub```
+
+```docker run -it --rm -p 2181:2181 -p 3030:3030 -p 8081:8081 -p 8082:8082 -p 8083:8083 -p 9092:9092 -e ADV_HOST=127.0.0.1 -e RUNTESTS=0 -v ~/udemy-kafka-connector/kafka-connect-github-source/target/kafka-connect-github-source-1.1-package/share/java/kafka-connect-github-source:/connectors/GitHub landoop/fast-data-dev```
+
 # Deploying
 
 Note: Java 8 is required for this connector. 
